@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d39bf14fc5c86f4a93e476009f55ffb, type: 3}
+  m_Name: Shotgun
+  m_EditorClassIdentifier: 
+  moveSpeed: 1
+  damage: 10
+  knockbackForce: 1
+  sprite: {fileID: 21300000, guid: 7395bf0bc3cc40e4ab2dda5ec6832261, type: 3}
+  homing: 1
+  delayBetweenShots: 0.4
+  projectilePrefab: {fileID: 5117251311947862139, guid: a0cd5ab8db3fbd342883203c888d1bd9, type: 3}
