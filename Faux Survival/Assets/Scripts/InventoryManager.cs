@@ -6,7 +6,7 @@ using TMPro;
 
 public class InventoryManager : MonoBehaviour
 {
-    [SerializeField] private WeaponStats defaultWeapon;
+    //[SerializeField] private WeaponStats defaultWeapon;
     public List<WeaponShoot> equipedWeapons = new List<WeaponShoot>(0);
     public TextMeshProUGUI[] weaponLevels = new TextMeshProUGUI[6];
     private Dictionary<WeaponStats, int> weaponLevelsDict = new Dictionary<WeaponStats, int>();
@@ -17,34 +17,32 @@ public class InventoryManager : MonoBehaviour
 
     private void Awake()
     {
-        AddWeapon(defaultWeapon);
+        //AddWeapon(defaultWeapon);
     }
 
-    public void AddWeapon(WeaponStats weapon)
+    public void AddWeapon(WeaponShoot weapon)
     {
         WeaponShoot weaponSlot = CheckIfAlreadyInInventory(weapon);
-
         // Already in inventory. Level-up!
         if (weaponSlot!=null)
         {
-            print("has");
+            print(2);
             LevelUpWeapon(weaponSlot);
         }
         // Not in inventory already. Add it!
         else
         {
-            GameObject body = Instantiate(new GameObject());
+            print(3);
+            GameObject body = Instantiate(weapon.gameObject);
             body.transform.SetParent(GameObject.FindGameObjectWithTag("Player").transform, false);
             body.name = weapon.name;
-            body.AddComponent<WeaponShoot>().weapon= weapon;
-
             slotIndex++;
             equipedWeapons.Add(body.GetComponent<WeaponShoot>());
             weaponUISlots[slotIndex].enabled = true;   // Enable the image component
-            weaponUISlots[slotIndex].sprite = weapon.Properties.Sprite;
+            weaponUISlots[slotIndex].sprite = weapon.weapon.Properties.Sprite;
 
             // Initialize the weapon level in both the dictionary and the array.
-            weaponLevelsDict.Add(weapon, 1); // Start with level 1
+            weaponLevelsDict.Add(weapon.weapon, 1); // Start with level 1
             weaponLevels[slotIndex].text = "1";
         }
     }
@@ -74,19 +72,19 @@ public class InventoryManager : MonoBehaviour
                 }
             }
         }
-
         return null;
     }
 
-    private WeaponShoot CheckIfAlreadyInInventory(WeaponStats weapon)
+    private WeaponShoot CheckIfAlreadyInInventory(WeaponShoot weapon)
     {
-        print(equipedWeapons);
-        foreach(WeaponShoot wp in equipedWeapons)
+        foreach (WeaponShoot wp in equipedWeapons)
         {
-            print(wp.name);
-            print(weapon.name); 
-            if(wp.weapon.name==weapon.name)
+            print(weapon.name== wp.name);
+            if(weapon.name == wp.name)
+            {
+                print(234);
                 return wp;
+            }
         }
         return null;
     }

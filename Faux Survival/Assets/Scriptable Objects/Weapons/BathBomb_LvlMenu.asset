@@ -16,4 +16,4 @@ MonoBehaviour:
   description: BathBomb
   itemLevel: 0
   weaponName: BathBomb
-  wapon: {fileID: -1047465208547741684, guid: eecbe3cf797903845b098ec4f829f8a4, type: 3}
+  weapon: {fileID: 3510389346979921329, guid: 2fc96a085396fe144847aa752dc2fbef, type: 3}

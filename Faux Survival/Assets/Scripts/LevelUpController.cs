@@ -48,6 +48,8 @@ public class LevelUpController : MonoBehaviour
             // Populate the buttons with selected items
             for (int i = 1; i < 4; i++)
             {
+                buttonContainer.GetChild(i).gameObject.SetActive(true);
+
                 Transform button = buttonContainer.GetChild(i);
                 Image itemImage = button.Find("ItemImage").GetComponent<Image>();
                 TextMeshProUGUI itemText = button.Find("ItemText").GetComponent<TextMeshProUGUI>();
@@ -79,15 +81,63 @@ public class LevelUpController : MonoBehaviour
         }
     }
 
+
+    public void WeaponPickUpScreen(LevelUpItem item)
+    {
+        if (!gameOverPanel.activeInHierarchy)
+        {// Pause the game time
+            Time.timeScale = 0f;
+
+            // Activate the Level Up screen UI
+            levelUpScreen.SetActive(true);
+
+            // Randomly select 3 items from levelUpItems
+            selectedItems = levelUpItems
+                .OrderBy(x => Random.value)
+                .Take(3)
+                .ToList();
+            selectedItems[1] = item;
+            // Populate the buttons with selected items
+            buttonContainer.GetChild(1).gameObject.SetActive(false);
+            buttonContainer.GetChild(3).gameObject.SetActive(false);
+            Transform button = buttonContainer.GetChild(2);
+            Image itemImage = button.Find("ItemImage").GetComponent<Image>();
+            TextMeshProUGUI itemText = button.Find("ItemText").GetComponent<TextMeshProUGUI>();
+
+            // Assign the image and text from selected items
+            LevelUpItem selectedItem = selectedItems[1];
+            string itemDescription = selectedItem.description;
+
+            if (selectedItem.itemLevel > 1)
+            {
+                // Display the item description with a suffix if clicked before
+                itemText.text = $"{itemDescription} (Level {selectedItem.itemLevel})";
+            }
+            else
+            {
+                itemText.text = itemDescription;
+            }
+
+            // Display the item image
+            itemImage.sprite = selectedItem.image;
+
+            // Remove previous onClick listeners to prevent multiple calls
+            button.GetComponent<Button>().onClick.RemoveAllListeners();
+
+            // Add an onClick event to each button
+            button.GetComponent<Button>().onClick.AddListener(() => UpgradeItem(1));
+        }
+    }
+
     // Function to handle item upgrades
-    void UpgradeItem(int itemIndex)
+    public void UpgradeItem(int itemIndex)
     {
         // Get the selected item
         LevelUpItem selectedItem = selectedItems[itemIndex];
 
         //Debug.Log("UPGRADE: " + selectedItems[itemIndex].description + "LEVEL: " + selectedItems[itemIndex].itemLevel);
 
-        WeaponStats weapon = selectedItem.wapon;
+        WeaponShoot weapon = selectedItem.weapon;
         print(weapon);
         if (weapon != null)
         {

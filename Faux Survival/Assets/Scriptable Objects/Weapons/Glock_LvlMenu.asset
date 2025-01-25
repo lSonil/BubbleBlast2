@@ -16,4 +16,4 @@ MonoBehaviour:
   description: Glock
   itemLevel: 0
   weaponName: Glock
-  wapon: {fileID: -1047465208547741684, guid: a0cd5ab8db3fbd342883203c888d1bd9, type: 3}
+  weapon: {fileID: 7624173202332778970, guid: 63aa0dd0cd2e08d478f33700fa02a551, type: 3}

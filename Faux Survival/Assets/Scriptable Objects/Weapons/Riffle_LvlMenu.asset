@@ -16,4 +16,4 @@ MonoBehaviour:
   description: Riffle
   itemLevel: 1
   weaponName: Riffle
-  wapon: {fileID: -1047465208547741684, guid: 36056ba1989e079439a85736f9675dcb, type: 3}
+  weapon: {fileID: 3510389346979921329, guid: b155bf2d159c8bb46ba8da467959f6d1, type: 3}

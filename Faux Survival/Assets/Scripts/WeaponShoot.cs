@@ -4,12 +4,40 @@ using UnityEngine;
 
 public class WeaponShoot : MonoBehaviour
 {
-    [SerializeField] private GameObject firePoint;
+    public GameObject firePoint;
+    public Transform handler;
     public WeaponStats weapon; // Weapons in the Players inventory
     public int lvl=0; // Weapons in the Players inventory
 
     private Vector2 shootDirection = Vector2.up;
     private Transform cluster;
+
+
+    void Update()
+    {
+        if (handler == null)
+            return;
+        Vector3 mouseWorldPosition=Vector3.zero;
+        // Get the mouse position in world coordinates
+        if (weapon.Properties.Type == WeaponShootType.Homing)
+        {
+            mouseWorldPosition = FindClosestEnemy().transform.position;
+        }
+        if (weapon.Properties.Type == WeaponShootType.Point)
+        {
+            mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        }
+
+        // Calculate the direction from the object to the mouse position
+        Vector3 direction = mouseWorldPosition - transform.position;
+        direction.z = 0f; // Ensure the direction is only on the X-Y plane
+
+        // Calculate the rotation angle in degrees
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+
+        // Apply the rotation to the transform
+        handler.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+    }
 
     private IEnumerator ShootProjectile()
     {
@@ -76,8 +104,6 @@ public class WeaponShoot : MonoBehaviour
     private void Start()
     {
         cluster = GameObject.Find("ProjectilesCluster").transform;
-        firePoint = GameObject.Find("Muzzle");
-
         StartCoroutine(StartShooting());
     }
 

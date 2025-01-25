@@ -49,8 +49,6 @@ public class PlayerStats : MonoBehaviour
         {
             currentHealth -= damageAmount;
             UpdateHealthText();
-
-            print(2);
         }
         else
         {
