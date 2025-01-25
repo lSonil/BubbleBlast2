@@ -22,7 +22,7 @@ public class EnemyHealth : MonoBehaviour
         }
     }
 
-    private void TakeDamage(int damageAmount)
+    public void TakeDamage(int damageAmount)
     {
         // Reduce the enemy's health by the damage amount.
         currentHealth -= damageAmount;

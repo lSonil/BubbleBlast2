@@ -374,13 +374,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultWeapon: {fileID: -1047465208547741684, guid: 36056ba1989e079439a85736f9675dcb, type: 3}
-  unlockedWeapons:
-  - {fileID: -1047465208547741684, guid: e9a55e2c408cbe94186a1fc040b1ae1a, type: 3}
-  - {fileID: -1047465208547741684, guid: 36056ba1989e079439a85736f9675dcb, type: 3}
-  - {fileID: -1047465208547741684, guid: 107b4955808be2745b4b9533a5d2936f, type: 3}
-  - {fileID: -1047465208547741684, guid: eecbe3cf797903845b098ec4f829f8a4, type: 3}
-  - {fileID: -1047465208547741684, guid: 1c023568c2c9f1442bcc82cd62b2072a, type: 3}
-  - {fileID: -1047465208547741684, guid: a0cd5ab8db3fbd342883203c888d1bd9, type: 3}
   equipedWeapons: []
   weaponLevels:
   - {fileID: 1893447885}

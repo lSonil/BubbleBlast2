@@ -6,7 +6,7 @@ public class WeaponShoot : MonoBehaviour
 {
     [SerializeField] private GameObject firePoint;
     public WeaponStats weapon; // Weapons in the Players inventory
-    public WeaponBonus bonus; // Weapons in the Players inventory
+    public int lvl=0; // Weapons in the Players inventory
 
     private Vector2 shootDirection = Vector2.up;
     private Transform cluster;
@@ -22,7 +22,7 @@ public class WeaponShoot : MonoBehaviour
         Transform targetBody=null;
         Vector2 target=Vector2.zero;
 
-        for (int i = 0; i < weapon.Properties.NumberOfProjectiles + bonus.numberOfProjectiles; i++)
+        for (int i = 0; i < weapon.Properties.NumberOfProjectiles + weapon.Properties.LevelUpBonus[lvl].numberOfProjectiles; i++)
         {
 
             if (targetBody == null)
@@ -58,10 +58,10 @@ public class WeaponShoot : MonoBehaviour
             if(weapon.Properties.Instant && targetBody != null)
                 projectile.transform.position = target;
             else
-                projectile.GetComponent<Rigidbody2D>().linearVelocity = homingDirection * (weapon.Properties.MoveSpeed + bonus.moveSpeed);
+                projectile.GetComponent<Rigidbody2D>().linearVelocity = homingDirection * (weapon.Properties.MoveSpeed + weapon.Properties.LevelUpBonus[lvl].moveSpeed);
             
             // Wait for the specified delay between shots.
-            yield return new WaitForSeconds(weapon.Properties.DelayBetweenShots + bonus.delayBetweenShots);
+            yield return new WaitForSeconds(weapon.Properties.DelayBetweenShots - (100 * weapon.Properties.LevelUpBonus[lvl].delayBetweenShots) / weapon.Properties.DelayBetweenShots);
         }
 
     }
@@ -82,7 +82,7 @@ public class WeaponShoot : MonoBehaviour
             else
             {
                 StartCoroutine(ShootProjectile());
-                yield return new WaitForSeconds(weapon.Properties.Cooldown + bonus.cooldown);
+                yield return new WaitForSeconds(weapon.Properties.Cooldown - (100 * weapon.Properties.LevelUpBonus[lvl].cooldown) / weapon.Properties.Cooldown);
             }
         }
     }

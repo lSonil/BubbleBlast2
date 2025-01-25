@@ -7,7 +7,6 @@ using TMPro;
 public class InventoryManager : MonoBehaviour
 {
     [SerializeField] private WeaponStats defaultWeapon;
-    public List<WeaponStats> unlockedWeapons = new List<WeaponStats>(6);
     public List<WeaponShoot> equipedWeapons = new List<WeaponShoot>(0);
     public TextMeshProUGUI[] weaponLevels = new TextMeshProUGUI[6];
     private Dictionary<WeaponStats, int> weaponLevelsDict = new Dictionary<WeaponStats, int>();
@@ -18,17 +17,18 @@ public class InventoryManager : MonoBehaviour
 
     private void Awake()
     {
-        AddWeapon(defaultWeapon, 1);
+        AddWeapon(defaultWeapon);
     }
 
-    public void AddWeapon(WeaponStats weapon, int itemLevel)
+    public void AddWeapon(WeaponStats weapon)
     {
-        int weaponSlotIndex = CheckIfAlreadyInInventory(weapon);
+        WeaponShoot weaponSlot = CheckIfAlreadyInInventory(weapon);
 
         // Already in inventory. Level-up!
-        if (weaponSlotIndex != 999)
+        if (weaponSlot!=null)
         {
-            LevelUpWeapon(weaponSlotIndex, itemLevel);
+            print("has");
+            LevelUpWeapon(weaponSlot);
         }
         // Not in inventory already. Add it!
         else
@@ -39,7 +39,7 @@ public class InventoryManager : MonoBehaviour
             body.AddComponent<WeaponShoot>().weapon= weapon;
 
             slotIndex++;
-            equipedWeapons.Add(body.AddComponent<WeaponShoot>());
+            equipedWeapons.Add(body.GetComponent<WeaponShoot>());
             weaponUISlots[slotIndex].enabled = true;   // Enable the image component
             weaponUISlots[slotIndex].sprite = weapon.Properties.Sprite;
 
@@ -49,45 +49,28 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    public void LevelUpWeapon(int slotIndex, int itemLevel)
+    public void LevelUpWeapon(WeaponShoot weapon)
     {
-        if (slotIndex < unlockedWeapons.Count)
-        {
-            WeaponStats weapon = unlockedWeapons[slotIndex];
+        weapon.lvl++;
+        print(weapon.lvl);
 
-            if (itemLevel > 1)
-            {
-                int newLevel = itemLevel;
-
-                // Update the weapon's level in both the dictionary and the array.
-                weaponLevelsDict[weapon] = newLevel;
-                weaponLevels[slotIndex].text = newLevel.ToString();
-
-                equipedWeapons[slotIndex].bonus= weapon.Properties.LevelUpBonus[itemLevel];
-            }
-        }
+        // Update the weapon's level in both the dictionary and the array.
+        weaponLevelsDict[weapon.weapon] = weapon.lvl;
+        weaponLevels[slotIndex].text = weapon.lvl.ToString();
     }
-
-    //public int GetWeaponLevel(WeaponStats weapon)
-    //{
-    //    // Retrieve the weapon's level from the dictionary.
-    //    if (weaponLevelsDict.TryGetValue(weapon, out int level))
-    //    {
-    //        return level;
-    //    }
-    //
-    //    return 1; // Return 1 if the weapon is not found in the dictionary.
-    //}
 
     public WeaponStats FindWeaponInList(string name)
     {
-        if (unlockedWeapons != null)
+        if (equipedWeapons != null)
         {
-            for (int i = 0; i < unlockedWeapons.Count; i++)
+            for (int i = 0; i < equipedWeapons.Count; i++)
             {
-                if (unlockedWeapons[i].Properties.name == name)
+                print(equipedWeapons[i].name);
+                print(name);
+
+                if (equipedWeapons[i].name == name)
                 {
-                    return unlockedWeapons[i];
+                    return equipedWeapons[i].weapon;
                 }
             }
         }
@@ -95,41 +78,16 @@ public class InventoryManager : MonoBehaviour
         return null;
     }
 
-    private int CheckIfAlreadyInInventory(WeaponStats weapon)
+    private WeaponShoot CheckIfAlreadyInInventory(WeaponStats weapon)
     {
+        print(equipedWeapons);
         foreach(WeaponShoot wp in equipedWeapons)
         {
-            if(wp.weapon==weapon)
-                return equipedWeapons.IndexOf(wp);
+            print(wp.name);
+            print(weapon.name); 
+            if(wp.weapon.name==weapon.name)
+                return wp;
         }
-
-        return 999;
+        return null;
     }
 }
-
-//public void AddPassiveItem(int slotIndex, PassiveItem passiveItem)  //Add a passive item to a specific slot
-//{
-//    passiveItemSlots[slotIndex] = passiveItem;
-//    passiveItemLevels[slotIndex] = passiveItem.passiveItemData.Level;
-//    passiveItemUISlots[slotIndex].enabled = true; //Enable the image component
-//    passiveItemUISlots[slotIndex].sprite = passiveItem.passiveItemData.Icon;
-//}
-
-
-//public void LevelUpPassiveItem(int slotIndex)
-//{
-//    if (passiveItemSlots.Count > slotIndex)
-//    {
-//        PassiveItem passiveItem = passiveItemSlots[slotIndex];
-//        if (!passiveItem.passiveItemData.NextLevelPrefab)  //Checks if there is a next level
-//        {
-//            Debug.LogError("NO NEXT LEVEL FOR " + passiveItem.name);
-//            return;
-//        }
-//        GameObject upgradedPassiveItem = Instantiate(passiveItem.passiveItemData.NextLevelPrefab, transform.position, Quaternion.identity);
-//        upgradedPassiveItem.transform.SetParent(transform);    //Set the passive item to be a child of the player
-//        AddPassiveItem(slotIndex, upgradedPassiveItem.GetComponent<PassiveItem>());
-//        Destroy(passiveItem.gameObject);
-//        passiveItemLevels[slotIndex] = upgradedPassiveItem.GetComponent<PassiveItem>().passiveItemData.Level;  //To make sure we have the correct passive item level
-//    }
-//}

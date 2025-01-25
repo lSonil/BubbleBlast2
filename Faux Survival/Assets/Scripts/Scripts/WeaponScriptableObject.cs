@@ -12,8 +12,8 @@ public class WeaponScriptableObject : ScriptableObject
     [SerializeField] private int damage;
     public int Damage { get => damage; private set => damage = value; }
 
-    [SerializeField] private int knockbackForce;
-    public int KnockbackForce { get => knockbackForce; private set => knockbackForce = value; }
+    //[SerializeField] private int knockbackForce;
+    //public int KnockbackForce { get => knockbackForce; private set => knockbackForce = value; }
 
     [SerializeField] private Sprite sprite;
     public Sprite Sprite { get => sprite; private set => sprite = value; }
@@ -26,6 +26,9 @@ public class WeaponScriptableObject : ScriptableObject
 
     [SerializeField] private int numberOfProjectiles;
     public int NumberOfProjectiles { get => numberOfProjectiles; private set => numberOfProjectiles = value; }
+
+    [SerializeField] private int pierce;
+    public int Pierce { get => pierce; private set => pierce = value; }
 
     //[SerializeField] private int level;
     //public int Level { get => level; private set => level = value; }
@@ -47,7 +50,7 @@ public enum WeaponShootType
     Direction,
     Homing,
     Random,
-    Special
+    Orbit
 }
 
 [System.Serializable]
@@ -55,7 +58,8 @@ public struct WeaponBonus
 {
     public float moveSpeed;          // Ensure fields are serializable
     public int damage;
-    public int knockbackForce;
+    public int pierce;
+    //public int knockbackForce;
     public int numberOfProjectiles;
     public int delayBetweenShots;
     public float cooldown;

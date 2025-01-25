@@ -38,19 +38,13 @@ public class EnemyStats : MonoBehaviour
         }
     }
 
-    public void TakeDamage(int dmg, float knockbackForce)
+    public void TakeDamage(int dmg)
     {
         currentHealth -= dmg;
 
         if (currentHealth <= 0)
         {
             Kill();
-        }
-        else
-        {
-            // Apply knockback force to the enemy
-            Vector2 knockbackDirection = (transform.position - player.position).normalized;
-            GetComponent<Rigidbody2D>().AddForce(knockbackDirection * knockbackForce, ForceMode2D.Impulse);
         }
     }
 
@@ -60,11 +54,11 @@ public class EnemyStats : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("PlayerWeapon"))
         {
-            TakeDamage(collision.gameObject.GetComponent<WeaponStats>().Properties.Damage, collision.gameObject.GetComponent<WeaponStats>().Properties.KnockbackForce);
+            TakeDamage(collision.gameObject.GetComponent<WeaponStats>().Properties.Damage);
         }
     }
 
