@@ -16,3 +16,4 @@ MonoBehaviour:
   description: Ray
   itemLevel: 0
   weaponName: Ray
+  wapon: {fileID: -1047465208547741684, guid: 1c023568c2c9f1442bcc82cd62b2072a, type: 3}

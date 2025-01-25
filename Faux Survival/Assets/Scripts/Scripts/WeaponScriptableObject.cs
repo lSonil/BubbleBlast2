@@ -21,6 +21,10 @@ public class WeaponScriptableObject : ScriptableObject
     [SerializeField] private WeaponShootType type;
     public WeaponShootType Type { get => type; private set => type = value; }
 
+    [SerializeField] private bool focus;
+    public bool Focus { get => focus; private set => focus = value; }
+
+
     [SerializeField] private bool instant;
     public bool Instant { get => instant; private set => instant = value; }
 
@@ -35,6 +39,8 @@ public class WeaponScriptableObject : ScriptableObject
 
     [SerializeField] private float delayBetweenShots;
     public float DelayBetweenShots { get => delayBetweenShots; private set => delayBetweenShots = value; }
+    [SerializeField] private float lifetime;
+    public float Lifetime { get => lifetime; private set => lifetime = value; }
     [SerializeField] private float cooldown;
     public float Cooldown { get => cooldown; private set => cooldown = value; }
 
@@ -50,6 +56,7 @@ public enum WeaponShootType
     Direction,
     Homing,
     Random,
+    Point,
     Orbit
 }
 
@@ -60,7 +67,8 @@ public struct WeaponBonus
     public int damage;
     public int pierce;
     //public int knockbackForce;
+    public float lifetime;
     public int numberOfProjectiles;
-    public int delayBetweenShots;
+    public float delayBetweenShots;
     public float cooldown;
 }

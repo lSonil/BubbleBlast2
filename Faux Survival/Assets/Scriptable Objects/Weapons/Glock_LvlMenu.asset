@@ -10,9 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 96b353bf98337a441aefaa0388ddc204, type: 3}
-  m_Name: Lightning_LvlMenu
+  m_Name: Glock_LvlMenu
   m_EditorClassIdentifier: 
-  image: {fileID: 21300000, guid: 3c84cd9c7ddd51c4b959d02c41aced07, type: 3}
-  description: Lightning
+  image: {fileID: 21300000, guid: 7395bf0bc3cc40e4ab2dda5ec6832261, type: 3}
+  description: Glock
   itemLevel: 0
-  weaponName: Lightning
+  weaponName: Glock
+  wapon: {fileID: -1047465208547741684, guid: a0cd5ab8db3fbd342883203c888d1bd9, type: 3}
