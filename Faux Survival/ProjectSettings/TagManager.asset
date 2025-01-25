@@ -7,14 +7,15 @@ TagManager:
   - Enemy
   - Prop
   - PlayerWeapon
+  - PickUpRange
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Enemy
   - Water
   - UI
-  - 
+  - Aura
   - 
   - 
   - 

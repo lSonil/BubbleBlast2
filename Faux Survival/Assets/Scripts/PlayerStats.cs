@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using DG.Tweening; // Make sure you import the DoTween namespace
 
 public class PlayerStats : MonoBehaviour
 {
@@ -11,10 +12,9 @@ public class PlayerStats : MonoBehaviour
     public Image levelFillAmount;
 
     private int experienceTotal = 0;
-    private int currentHealth;
+    public int currentHealth;
     private int currentMight;
     private int currentSpeed;
-    private int currentLevel = 1;
 
     private int previousLevelExperienceRequirement = 0;
     private int nextLevelExperienceRequirement = 50; // Initial threshold for level 2.
@@ -47,6 +47,7 @@ public class PlayerStats : MonoBehaviour
         currentHealth -= damageAmount;
         UpdateHealthText();
 
+        print(2);
         if (currentHealth <= 0)
         {
             RestartLevel();
@@ -76,9 +77,14 @@ public class PlayerStats : MonoBehaviour
     public void IncreaseExperience(int experience)
     {
         experienceTotal += experience;
-        Debug.Log("Percentage of 100% is: " + (float)(experienceTotal - previousLevelExperienceRequirement) / ((float)nextLevelExperienceRequirement - previousLevelExperienceRequirement));
-        levelFillAmount.fillAmount = (float)(experienceTotal - previousLevelExperienceRequirement) / ((float)nextLevelExperienceRequirement - previousLevelExperienceRequirement);
         CheckForLevelUp();
+        float fillAmountTarget = (float)(experienceTotal - previousLevelExperienceRequirement) / ((float)nextLevelExperienceRequirement - previousLevelExperienceRequirement);
+
+        Debug.Log("Percentage of 100% is: " + fillAmountTarget);
+
+        // Tween the fill amount to the target value over 1 second
+
+        levelFillAmount.DOFillAmount(fillAmountTarget, 1.0f);
     }
 
 
@@ -93,9 +99,6 @@ public class PlayerStats : MonoBehaviour
 
     private void LevelUp()
     {
-        // Increase the current level.
-        currentLevel++;
-
         // Reset the UI fill amount
         levelFillAmount.fillAmount = 0;
 
@@ -108,9 +111,9 @@ public class PlayerStats : MonoBehaviour
         // You can also grant additional rewards or update player stats here.
         // For example, you might increase the player's maximum health or grant new abilities.
 
-        Debug.Log("Level Up! Current Level: " + currentLevel);
-        Debug.Log("Curent Experience: " + experienceTotal);
-        Debug.Log("Next Level Requirement: " + nextLevelExperienceRequirement);
+        //Debug.Log("Level Up! Current Level: " + currentLevel);
+        //Debug.Log("Curent Experience: " + experienceTotal);
+        //Debug.Log("Next Level Requirement: " + nextLevelExperienceRequirement);
         levelUpController.LevelUpScreen();
     }
 

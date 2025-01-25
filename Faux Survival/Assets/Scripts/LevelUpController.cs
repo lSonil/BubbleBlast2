@@ -11,6 +11,7 @@ public class LevelUpController : MonoBehaviour
     public Transform buttonContainer;
     public List<LevelUpItem> levelUpItems;
     private List<LevelUpItem> selectedItems;
+    private List<WeaponStats> weapons;
     [SerializeField] private InventoryManager inventoryManager;
 
     void Start()
@@ -81,18 +82,12 @@ public class LevelUpController : MonoBehaviour
         // Get the selected item
         LevelUpItem selectedItem = selectedItems[itemIndex];
 
-        // Increment the item level
-        selectedItem.itemLevel++;
-
         //Debug.Log("UPGRADE: " + selectedItems[itemIndex].description + "LEVEL: " + selectedItems[itemIndex].itemLevel);
 
-        print(2);
-        WeaponStats weapon = inventoryManager.FindWeaponInList(selectedItem.weaponName);
-
+        WeaponStats weapon = selectedItem.wapon;
+        print(weapon);
         if(weapon != null)
         {
-            print(3);
-
             inventoryManager.AddWeapon(weapon);
         }
 

@@ -9,7 +9,7 @@ public class HealthPotion : Pickup
 
     public override void Collect()
     {
-        PlayerStats player = FindObjectOfType<PlayerStats>();
+        PlayerStats player = FindFirstObjectByType<PlayerStats>();
         player.RestoreHealth(healthToRestore);
     }
 

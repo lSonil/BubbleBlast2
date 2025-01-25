@@ -25,7 +25,7 @@ public class WeaponShoot : MonoBehaviour
         for (int i = 0; i < weapon.Properties.NumberOfProjectiles + weapon.Properties.LevelUpBonus[lvl].numberOfProjectiles; i++)
         {
 
-            if (targetBody == null)
+            if (targetBody == null || !weapon.Properties.Focus)
             {
                 if (weapon.Properties.Type == WeaponShootType.Homing)
                 {
@@ -61,7 +61,7 @@ public class WeaponShoot : MonoBehaviour
                 projectile.GetComponent<Rigidbody2D>().linearVelocity = homingDirection * (weapon.Properties.MoveSpeed + weapon.Properties.LevelUpBonus[lvl].moveSpeed);
             
             // Wait for the specified delay between shots.
-            yield return new WaitForSeconds(weapon.Properties.DelayBetweenShots - (100 * weapon.Properties.LevelUpBonus[lvl].delayBetweenShots) / weapon.Properties.DelayBetweenShots);
+            yield return new WaitForSeconds(weapon.Properties.DelayBetweenShots - weapon.Properties.LevelUpBonus[lvl].delayBetweenShots);
         }
 
     }
@@ -82,7 +82,8 @@ public class WeaponShoot : MonoBehaviour
             else
             {
                 StartCoroutine(ShootProjectile());
-                yield return new WaitForSeconds(weapon.Properties.Cooldown - (100 * weapon.Properties.LevelUpBonus[lvl].cooldown) / weapon.Properties.Cooldown);
+                yield return new WaitForSeconds(weapon.Properties.Cooldown - weapon.Properties.LevelUpBonus[lvl].cooldown);
+                weapon.lvl = lvl;
             }
         }
     }

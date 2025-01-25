@@ -16,3 +16,4 @@ MonoBehaviour:
   description: Axe
   itemLevel: 0
   weaponName: Axe
+  wapon: {fileID: -1047465208547741684, guid: e9a55e2c408cbe94186a1fc040b1ae1a, type: 3}

@@ -16,3 +16,4 @@ MonoBehaviour:
   description: Shotgun
   itemLevel: 0
   weaponName: Shotgun
+  wapon: {fileID: -1047465208547741684, guid: a0cd5ab8db3fbd342883203c888d1bd9, type: 3}
