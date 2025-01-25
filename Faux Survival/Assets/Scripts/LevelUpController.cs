@@ -84,13 +84,16 @@ public class LevelUpController : MonoBehaviour
         // Increment the item level
         selectedItem.itemLevel++;
 
-        Debug.Log("UPGRADE: " + selectedItems[itemIndex].description + "LEVEL: " + selectedItems[itemIndex].itemLevel);
+        //Debug.Log("UPGRADE: " + selectedItems[itemIndex].description + "LEVEL: " + selectedItems[itemIndex].itemLevel);
 
+        print(2);
         WeaponStats weapon = inventoryManager.FindWeaponInList(selectedItem.weaponName);
 
         if(weapon != null)
         {
-            inventoryManager.AddWeapon(weapon, selectedItem.itemLevel);
+            print(3);
+
+            inventoryManager.AddWeapon(weapon);
         }
 
         // Remove the Level Up screen
