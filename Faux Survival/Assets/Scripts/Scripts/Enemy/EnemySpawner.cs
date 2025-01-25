@@ -41,7 +41,7 @@ public class EnemySpawner : MonoBehaviour
 
     void Start()
     {
-        player = FindObjectOfType<PlayerStats>().transform;
+        player = FindFirstObjectByType<PlayerStats>().transform;
         CalculateWaveQuota();
     }
 
@@ -103,6 +103,7 @@ public class EnemySpawner : MonoBehaviour
                         player.position + relativeSpawnPoints[Random.Range(0, relativeSpawnPoints.Count)].position,
                         Quaternion.identity
                     );
+                    spawnedEnemy.transform.SetParent(transform, false);
 
                     enemyGroup.spawnCount++;
                     waves[currentWaveCount].spawnCount++;
@@ -146,7 +147,20 @@ public class EnemySpawner : MonoBehaviour
             }
         }
 
-        if(closestEnemy != null)
+        if (closestEnemy != null)
+            return closestEnemy.transform;
+
+        return null;
+    }
+
+    public Transform FindRandomEnemy(Vector3 playerPosition)
+    {
+        GameObject closestEnemy = null;
+
+        if(activeEnemies.Count>0)
+            closestEnemy = activeEnemies[Random.Range(0, activeEnemies.Count)];
+
+        if (closestEnemy != null)
             return closestEnemy.transform;
 
         return null;

@@ -18,7 +18,7 @@ public class PlayerDash : MonoBehaviour
 
     public void Dash()
     {
-        Vector2 direction = GetComponent<PlayerMovement>().movementJoystick.GetJoystickVect();
+        Vector2 direction = GetComponent<PlayerMovement>().movement;
 
         if (canDash && direction != Vector2.zero)
         {

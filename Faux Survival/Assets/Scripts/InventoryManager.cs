@@ -6,7 +6,6 @@ using TMPro;
 
 public class InventoryManager : MonoBehaviour
 {
-    [SerializeField] private PlayerShoot shootingHandler;
     [SerializeField] private WeaponStats defaultWeapon;
     public List<WeaponStats> unlockedWeapons = new List<WeaponStats>(6);
     public List<WeaponStats> equipedWeapons = new List<WeaponStats>(0);
@@ -17,12 +16,12 @@ public class InventoryManager : MonoBehaviour
     public List<Image> passiveItemUISlots = new List<Image>(6);
     private int slotIndex = 0;
 
-    private void Start()
+    private void Awake()
     {
-        shootingHandler = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerShoot>();
+        AddWeapon(defaultWeapon, 1);
         equipedWeapons.Add(defaultWeapon);
         weaponUISlots[slotIndex].enabled = true;   // Enable the image component
-        weaponUISlots[slotIndex].sprite = defaultWeapon.WeaponProperties.Sprite;
+        weaponUISlots[slotIndex].sprite = defaultWeapon.Properties.Sprite;
 
         // Initialize the weapon levels dictionary based on the weaponLevels array.
         for (int i = 0; i < equipedWeapons.Count; i++)
@@ -35,14 +34,16 @@ public class InventoryManager : MonoBehaviour
             weaponLevelsDict.Add(equipedWeapons[i], weaponLevel);
             //weaponLevels[i].text = weaponLevel.ToString(); // Ensure the UI text is set correctly
         }
-
-        shootingHandler.AddWeapon(defaultWeapon);
     }
 
 
 
-    public void AddWeapon(WeaponStats weapon, LevelUpItem itemLevel)
+    public void AddWeapon(WeaponStats weapon, int itemLevel)
     {
+        GameObject body = Instantiate(new GameObject());
+        body.transform.SetParent(GameObject.FindGameObjectWithTag("Player").transform, false);
+        body.name = weapon.name;
+        body.AddComponent<WeaponShoot>().weapon= weapon;
         int weaponSlotIndex = CheckIfAlreadyInInventory(weapon);
 
         // Already in inventory. Level-up!
@@ -54,10 +55,9 @@ public class InventoryManager : MonoBehaviour
         else
         {
             slotIndex++;
-            shootingHandler.AddWeapon(weapon);
             equipedWeapons.Add(weapon);
             weaponUISlots[slotIndex].enabled = true;   // Enable the image component
-            weaponUISlots[slotIndex].sprite = weapon.WeaponProperties.Sprite;
+            weaponUISlots[slotIndex].sprite = weapon.Properties.Sprite;
 
             // Initialize the weapon level in both the dictionary and the array.
             weaponLevelsDict.Add(weapon, 1); // Start with level 1
@@ -65,22 +65,20 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    public void LevelUpWeapon(int slotIndex, LevelUpItem itemLevel)
+    public void LevelUpWeapon(int slotIndex, int itemLevel)
     {
         if (slotIndex < unlockedWeapons.Count)
         {
             WeaponStats weapon = unlockedWeapons[slotIndex];
 
-            if (itemLevel.itemLevel > 1)
+            if (itemLevel > 1)
             {
-                int newLevel = itemLevel.itemLevel;
+                int newLevel = itemLevel;
 
                 // Update the weapon's level in both the dictionary and the array.
                 weaponLevelsDict[weapon] = newLevel;
                 weaponLevels[slotIndex].text = newLevel.ToString();
             }
-
-            weapon.UpgradeWeapon();
         }
     }
 
@@ -101,7 +99,7 @@ public class InventoryManager : MonoBehaviour
         {
             for (int i = 0; i < unlockedWeapons.Count; i++)
             {
-                if (unlockedWeapons[i].WeaponProperties.name == name)
+                if (unlockedWeapons[i].Properties.name == name)
                 {
                     return unlockedWeapons[i];
                 }
@@ -115,7 +113,7 @@ public class InventoryManager : MonoBehaviour
     {
         for (int i = 0; i < equipedWeapons.Count; i++)
         {
-            if (equipedWeapons[i].WeaponProperties.name == weapon.WeaponProperties.name)
+            if (equipedWeapons[i].Properties.name == weapon.Properties.name)
             {
                 return i;
             }

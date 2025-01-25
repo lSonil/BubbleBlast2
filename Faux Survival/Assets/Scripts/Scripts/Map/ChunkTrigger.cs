@@ -10,7 +10,7 @@ public class ChunkTrigger : MonoBehaviour
 
     void Start()
     {
-        mc = FindObjectOfType<MapController>();
+        mc = FindFirstObjectByType<MapController>();
     }
 
     private void OnTriggerStay2D(Collider2D col)

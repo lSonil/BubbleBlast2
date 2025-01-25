@@ -56,6 +56,7 @@ public class EnemySpawner_ORIG : MonoBehaviour
 
     private Vector2 GetRandomOffscreenPosition()
     {
+        print(2);
         // Calculate a random angle and distance.
         float angle = Random.Range(0f, Mathf.PI * 2); // Random angle in radians.
         float distance = Random.Range(spawnRadius / 2, spawnRadius);

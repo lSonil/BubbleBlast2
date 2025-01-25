@@ -16,6 +16,9 @@ MonoBehaviour:
   damage: 10
   knockbackForce: 1
   sprite: {fileID: 21300000, guid: 17d971605cfbaea47b0d10b0b5dbc406, type: 3}
-  homing: 0
+  type: 1
+  instant: 1
+  numberOfProjectiles: 3
   delayBetweenShots: 0.3
+  cooldown: 3
   projectilePrefab: {fileID: 5117251311947862139, guid: 36056ba1989e079439a85736f9675dcb, type: 3}

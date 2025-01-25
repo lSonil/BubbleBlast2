@@ -90,7 +90,7 @@ public class LevelUpController : MonoBehaviour
 
         if(weapon != null)
         {
-            inventoryManager.AddWeapon(weapon, selectedItem);
+            inventoryManager.AddWeapon(weapon, selectedItem.itemLevel);
         }
 
         // Remove the Level Up screen

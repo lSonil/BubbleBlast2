@@ -8,7 +8,7 @@ public class ExperienceGem : Pickup
 
     public override void Collect()
     {
-        PlayerStats player = FindObjectOfType<PlayerStats>();
+        PlayerStats player = FindFirstObjectByType<PlayerStats>();
         player.IncreaseExperience(experienceGranted);
     }
 }

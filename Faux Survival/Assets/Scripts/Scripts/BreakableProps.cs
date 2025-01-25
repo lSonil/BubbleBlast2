@@ -25,7 +25,7 @@ public class BreakableProps : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("PlayerWeapon"))
         {
-            TakeDamage(collision.gameObject.GetComponent<WeaponStats>().WeaponProperties.Damage);
+            TakeDamage(collision.gameObject.GetComponent<WeaponStats>().Properties.Damage);
         }
     }
 }

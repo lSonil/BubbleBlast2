@@ -27,7 +27,7 @@ public class EnemyStats : MonoBehaviour
 
     void Start()
     {
-        player = FindObjectOfType<PlayerStats>().transform;
+        player = FindFirstObjectByType<PlayerStats>().transform;
     }
 
     void Update()
@@ -64,7 +64,7 @@ public class EnemyStats : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("PlayerWeapon"))
         {
-            TakeDamage(collision.gameObject.GetComponent<WeaponStats>().WeaponProperties.Damage, collision.gameObject.GetComponent<WeaponStats>().WeaponProperties.KnockbackForce);
+            TakeDamage(collision.gameObject.GetComponent<WeaponStats>().Properties.Damage, collision.gameObject.GetComponent<WeaponStats>().Properties.KnockbackForce);
         }
     }
 

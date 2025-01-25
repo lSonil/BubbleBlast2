@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
 
 public class DropRateManager : MonoBehaviour
 {
@@ -34,8 +35,12 @@ public class DropRateManager : MonoBehaviour
         //Check if there are possible drops
         if (possibleDrops.Count > 0)
         {
+            Transform cluster = GameObject.Find("ExpCluster").transform;
+
             Drops drops = possibleDrops[UnityEngine.Random.Range(0, possibleDrops.Count)];
-            Instantiate(drops.itemPrefab, transform.position, Quaternion.identity);
+            GameObject drop = Instantiate(drops.itemPrefab, transform.position, Quaternion.identity);
+            drop.transform.SetParent(cluster, false);
+
         }
     }
 }
