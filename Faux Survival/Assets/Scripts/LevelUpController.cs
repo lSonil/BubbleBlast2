@@ -8,6 +8,7 @@ public class LevelUpController : MonoBehaviour
 {
     [SerializeField] private LevelUpItem defaultItem;
     public GameObject levelUpScreen;
+    public GameObject gameOverPanel;
     public Transform buttonContainer;
     public List<LevelUpItem> levelUpItems;
     private List<LevelUpItem> selectedItems;
@@ -31,48 +32,50 @@ public class LevelUpController : MonoBehaviour
     // Function to open the Level Up screen
     public void LevelUpScreen()
     {
-        // Pause the game time
-        Time.timeScale = 0f;
+        if (!gameOverPanel.activeInHierarchy)
+        {// Pause the game time
+            Time.timeScale = 0f;
 
-        // Activate the Level Up screen UI
-        levelUpScreen.SetActive(true);
+            // Activate the Level Up screen UI
+            levelUpScreen.SetActive(true);
 
-        // Randomly select 3 items from levelUpItems
-        selectedItems = levelUpItems 
-            .OrderBy(x => Random.value)
-            .Take(3)
-            .ToList();
+            // Randomly select 3 items from levelUpItems
+            selectedItems = levelUpItems
+                .OrderBy(x => Random.value)
+                .Take(3)
+                .ToList();
 
-        // Populate the buttons with selected items
-        for (int i = 0; i < 3; i++)
-        {
-            Transform button = buttonContainer.GetChild(i);
-            Image itemImage = button.Find("ItemImage").GetComponent<Image>();
-            TextMeshProUGUI itemText = button.Find("ItemText").GetComponent<TextMeshProUGUI>();
-
-            // Assign the image and text from selected items
-            LevelUpItem selectedItem = selectedItems[i];
-            string itemDescription = selectedItem.description;
-
-            if (selectedItem.itemLevel > 1)
+            // Populate the buttons with selected items
+            for (int i = 1; i < 4; i++)
             {
-                // Display the item description with a suffix if clicked before
-                itemText.text = $"{itemDescription} (Level {selectedItem.itemLevel})";
+                Transform button = buttonContainer.GetChild(i);
+                Image itemImage = button.Find("ItemImage").GetComponent<Image>();
+                TextMeshProUGUI itemText = button.Find("ItemText").GetComponent<TextMeshProUGUI>();
+
+                // Assign the image and text from selected items
+                LevelUpItem selectedItem = selectedItems[i - 1];
+                string itemDescription = selectedItem.description;
+
+                if (selectedItem.itemLevel > 1)
+                {
+                    // Display the item description with a suffix if clicked before
+                    itemText.text = $"{itemDescription} (Level {selectedItem.itemLevel})";
+                }
+                else
+                {
+                    itemText.text = itemDescription;
+                }
+
+                // Display the item image
+                itemImage.sprite = selectedItem.image;
+
+                // Remove previous onClick listeners to prevent multiple calls
+                button.GetComponent<Button>().onClick.RemoveAllListeners();
+
+                // Add an onClick event to each button
+                int itemIndex = i - 1; // To capture the correct itemIndex in the lambda
+                button.GetComponent<Button>().onClick.AddListener(() => UpgradeItem(itemIndex));
             }
-            else
-            {
-                itemText.text = itemDescription;
-            }
-
-            // Display the item image
-            itemImage.sprite = selectedItem.image;
-
-            // Remove previous onClick listeners to prevent multiple calls
-            button.GetComponent<Button>().onClick.RemoveAllListeners();
-
-            // Add an onClick event to each button
-            int itemIndex = i; // To capture the correct itemIndex in the lambda
-            button.GetComponent<Button>().onClick.AddListener(() => UpgradeItem(itemIndex));
         }
     }
 
@@ -86,7 +89,7 @@ public class LevelUpController : MonoBehaviour
 
         WeaponStats weapon = selectedItem.wapon;
         print(weapon);
-        if(weapon != null)
+        if (weapon != null)
         {
             inventoryManager.AddWeapon(weapon);
         }

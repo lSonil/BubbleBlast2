@@ -2405,6 +2405,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PanelFadeTransition
       objectReference: {fileID: 0}
+    - target: {fileID: 256711758773629373, guid: 48bbc87601aed8b408057b0fea58abe8, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6523362479052267611, guid: 48bbc87601aed8b408057b0fea58abe8, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -2483,6 +2487,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6523362479052267611, guid: 48bbc87601aed8b408057b0fea58abe8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6584314460029279058, guid: 48bbc87601aed8b408057b0fea58abe8, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6584314460029279058, guid: 48bbc87601aed8b408057b0fea58abe8, type: 3}
+      propertyPath: m_Color.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6584314460029279058, guid: 48bbc87601aed8b408057b0fea58abe8, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6584314460029279058, guid: 48bbc87601aed8b408057b0fea58abe8, type: 3}
+      propertyPath: m_Color.r
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

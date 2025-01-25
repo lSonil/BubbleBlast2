@@ -10,6 +10,7 @@ public class PlayerStats : MonoBehaviour
     public int startingSpeed = 0;
     public Image healthFillAmount;
     public Image levelFillAmount;
+    public GameObject gameOverPanel;
 
     private int experienceTotal = 0;
     public int currentHealth;
@@ -44,11 +45,14 @@ public class PlayerStats : MonoBehaviour
 
     public void TakeDamage(int damageAmount)
     {
-        currentHealth -= damageAmount;
-        UpdateHealthText();
+        if (currentHealth > 0)
+        {
+            currentHealth -= damageAmount;
+            UpdateHealthText();
 
-        print(2);
-        if (currentHealth <= 0)
+            print(2);
+        }
+        else
         {
             RestartLevel();
         }
@@ -62,8 +66,8 @@ public class PlayerStats : MonoBehaviour
 
     private void RestartLevel()
     {
-        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        SceneManager.LoadScene(currentSceneIndex);
+        if (!gameOverPanel.activeInHierarchy)
+            gameOverPanel.SetActive(true);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
