@@ -15,7 +15,13 @@ public class PlayerDash : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
     }
-
+    private void FixedUpdate()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Dash();
+        }
+    }
     public void Dash()
     {
         Vector2 direction = GetComponent<PlayerMovement>().movement;

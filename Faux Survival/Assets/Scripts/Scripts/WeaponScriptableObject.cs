@@ -57,5 +57,6 @@ public struct WeaponBonus
     public int damage;
     public int knockbackForce;
     public int numberOfProjectiles;
+    public int delayBetweenShots;
     public float cooldown;
 }

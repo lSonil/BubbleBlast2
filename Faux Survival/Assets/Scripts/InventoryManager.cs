@@ -8,7 +8,7 @@ public class InventoryManager : MonoBehaviour
 {
     [SerializeField] private WeaponStats defaultWeapon;
     public List<WeaponStats> unlockedWeapons = new List<WeaponStats>(6);
-    public List<WeaponStats> equipedWeapons = new List<WeaponStats>(0);
+    public List<WeaponShoot> equipedWeapons = new List<WeaponShoot>(0);
     public TextMeshProUGUI[] weaponLevels = new TextMeshProUGUI[6];
     private Dictionary<WeaponStats, int> weaponLevelsDict = new Dictionary<WeaponStats, int>();
     public List<Image> weaponUISlots = new List<Image>(6);
@@ -16,34 +16,13 @@ public class InventoryManager : MonoBehaviour
     public List<Image> passiveItemUISlots = new List<Image>(6);
     private int slotIndex = 0;
 
-    private void Awake()
+    private void Start()
     {
         AddWeapon(defaultWeapon, 1);
-        equipedWeapons.Add(defaultWeapon);
-        weaponUISlots[slotIndex].enabled = true;   // Enable the image component
-        weaponUISlots[slotIndex].sprite = defaultWeapon.Properties.Sprite;
-
-        // Initialize the weapon levels dictionary based on the weaponLevels array.
-        for (int i = 0; i < equipedWeapons.Count; i++)
-        {
-            int weaponLevel = 1; // Default level if parsing fails or text is empty
-            if (!string.IsNullOrEmpty(weaponLevels[i].text))
-            {
-                int.TryParse(weaponLevels[i].text, out weaponLevel); // Try parsing the text
-            }
-            weaponLevelsDict.Add(equipedWeapons[i], weaponLevel);
-            //weaponLevels[i].text = weaponLevel.ToString(); // Ensure the UI text is set correctly
-        }
     }
-
-
 
     public void AddWeapon(WeaponStats weapon, int itemLevel)
     {
-        GameObject body = Instantiate(new GameObject());
-        body.transform.SetParent(GameObject.FindGameObjectWithTag("Player").transform, false);
-        body.name = weapon.name;
-        body.AddComponent<WeaponShoot>().weapon= weapon;
         int weaponSlotIndex = CheckIfAlreadyInInventory(weapon);
 
         // Already in inventory. Level-up!
@@ -54,8 +33,13 @@ public class InventoryManager : MonoBehaviour
         // Not in inventory already. Add it!
         else
         {
+            GameObject body = Instantiate(new GameObject());
+            body.transform.SetParent(GameObject.FindGameObjectWithTag("Player").transform, false);
+            body.name = weapon.name;
+            body.AddComponent<WeaponShoot>().weapon= weapon;
+
             slotIndex++;
-            equipedWeapons.Add(weapon);
+            equipedWeapons.Add(body.AddComponent<WeaponShoot>());
             weaponUISlots[slotIndex].enabled = true;   // Enable the image component
             weaponUISlots[slotIndex].sprite = weapon.Properties.Sprite;
 
@@ -78,20 +62,22 @@ public class InventoryManager : MonoBehaviour
                 // Update the weapon's level in both the dictionary and the array.
                 weaponLevelsDict[weapon] = newLevel;
                 weaponLevels[slotIndex].text = newLevel.ToString();
+
+                equipedWeapons[slotIndex].bonus= weapon.Properties.LevelUpBonus[itemLevel];
             }
         }
     }
 
-    public int GetWeaponLevel(WeaponStats weapon)
-    {
-        // Retrieve the weapon's level from the dictionary.
-        if (weaponLevelsDict.TryGetValue(weapon, out int level))
-        {
-            return level;
-        }
-
-        return 1; // Return 1 if the weapon is not found in the dictionary.
-    }
+    //public int GetWeaponLevel(WeaponStats weapon)
+    //{
+    //    // Retrieve the weapon's level from the dictionary.
+    //    if (weaponLevelsDict.TryGetValue(weapon, out int level))
+    //    {
+    //        return level;
+    //    }
+    //
+    //    return 1; // Return 1 if the weapon is not found in the dictionary.
+    //}
 
     public WeaponStats FindWeaponInList(string name)
     {
@@ -113,7 +99,7 @@ public class InventoryManager : MonoBehaviour
     {
         for (int i = 0; i < equipedWeapons.Count; i++)
         {
-            if (equipedWeapons[i].Properties.name == weapon.Properties.name)
+            if (equipedWeapons[i].weapon.Properties.name == weapon.Properties.name)
             {
                 return i;
             }

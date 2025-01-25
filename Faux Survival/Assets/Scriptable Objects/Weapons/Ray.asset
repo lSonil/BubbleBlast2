@@ -22,3 +22,24 @@ MonoBehaviour:
   delayBetweenShots: 0.7
   cooldown: 3
   projectilePrefab: {fileID: 5117251311947862139, guid: 1c023568c2c9f1442bcc82cd62b2072a, type: 3}
+  levelUpBonus:
+  - moveSpeed: 1
+    damage: 1
+    knockbackForce: 0
+    numberOfProjectiles: 0
+    cooldown: 0
+  - moveSpeed: 1
+    damage: 1
+    knockbackForce: 0
+    numberOfProjectiles: 0
+    cooldown: 0
+  - moveSpeed: 1
+    damage: 1
+    knockbackForce: 0
+    numberOfProjectiles: 0
+    cooldown: 0
+  - moveSpeed: 1
+    damage: 1
+    knockbackForce: 0
+    numberOfProjectiles: 0
+    cooldown: 0

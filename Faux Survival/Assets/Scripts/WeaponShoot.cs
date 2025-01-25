@@ -7,8 +7,6 @@ public class WeaponShoot : MonoBehaviour
     [SerializeField] private GameObject firePoint;
     public WeaponStats weapon; // Weapons in the Players inventory
     public WeaponBonus bonus; // Weapons in the Players inventory
-    public float weaponSpeed = 10f; // Speed at which Weapons move.
-    public float weaponLifetime = 2f; // Lifetime of each Weapon before it despawns.
 
     private Vector2 shootDirection = Vector2.up;
     private Transform cluster;
@@ -24,7 +22,7 @@ public class WeaponShoot : MonoBehaviour
         Transform targetBody=null;
         Vector2 target=Vector2.zero;
 
-        for (int i = 0; i < weapon.Properties.NumberOfProjectiles; i++)
+        for (int i = 0; i < weapon.Properties.NumberOfProjectiles + bonus.numberOfProjectiles; i++)
         {
 
             if (targetBody == null)
@@ -60,13 +58,10 @@ public class WeaponShoot : MonoBehaviour
             if(weapon.Properties.Instant && targetBody != null)
                 projectile.transform.position = target;
             else
-                projectile.GetComponent<Rigidbody2D>().linearVelocity = homingDirection * weaponSpeed;
+                projectile.GetComponent<Rigidbody2D>().linearVelocity = homingDirection * (weapon.Properties.MoveSpeed + bonus.moveSpeed);
             
-            // Destroy the Weapon after the specified lifetime.
-            Destroy(projectile, weaponLifetime);
-
             // Wait for the specified delay between shots.
-            yield return new WaitForSeconds(weapon.Properties.DelayBetweenShots);
+            yield return new WaitForSeconds(weapon.Properties.DelayBetweenShots + bonus.delayBetweenShots);
         }
 
     }
@@ -83,7 +78,7 @@ public class WeaponShoot : MonoBehaviour
         while (true)
         {
             StartCoroutine(ShootProjectile());
-            yield return new WaitForSeconds(weapon.Properties.Cooldown);
+            yield return new WaitForSeconds(weapon.Properties.Cooldown + bonus.cooldown);
         }
     }
 

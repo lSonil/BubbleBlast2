@@ -12,13 +12,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d39bf14fc5c86f4a93e476009f55ffb, type: 3}
   m_Name: Fireball
   m_EditorClassIdentifier: 
-  moveSpeed: 1
+  moveSpeed: 10
   damage: 10
   knockbackForce: 1
   sprite: {fileID: 21300000, guid: 17d971605cfbaea47b0d10b0b5dbc406, type: 3}
   type: 1
-  instant: 1
+  instant: 0
   numberOfProjectiles: 3
-  delayBetweenShots: 0.3
+  delayBetweenShots: 0.1
   cooldown: 3
   projectilePrefab: {fileID: 5117251311947862139, guid: 36056ba1989e079439a85736f9675dcb, type: 3}
+  levelUpBonus:
+  - moveSpeed: 1
+    damage: 1
+    knockbackForce: 0
+    numberOfProjectiles: 3
+    cooldown: 0
+  - moveSpeed: 1
+    damage: 1
+    knockbackForce: 0
+    numberOfProjectiles: 0
+    cooldown: 0
+  - moveSpeed: 1
+    damage: 1
+    knockbackForce: 0
+    numberOfProjectiles: 0
+    cooldown: 0
+  - moveSpeed: 1
+    damage: 1
+    knockbackForce: 0
+    numberOfProjectiles: 0
+    cooldown: 0
