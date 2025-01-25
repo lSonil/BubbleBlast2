@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 791362152736659128}
   - component: {fileID: -1047465208547741684}
   m_Layer: 0
-  m_Name: Shotgun
+  m_Name: Glock
   m_TagString: PlayerWeapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

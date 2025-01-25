@@ -56,6 +56,7 @@ public enum WeaponShootType
     Direction,
     Homing,
     Random,
+    Point,
     Orbit
 }
 

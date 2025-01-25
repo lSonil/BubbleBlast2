@@ -373,7 +373,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5563ce8b5e8f984695bab9ffac7f02d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultWeapon: {fileID: -1047465208547741684, guid: 36056ba1989e079439a85736f9675dcb, type: 3}
+  defaultWeapon: {fileID: -1047465208547741684, guid: a0cd5ab8db3fbd342883203c888d1bd9, type: 3}
   equipedWeapons: []
   weaponLevels:
   - {fileID: 1893447885}

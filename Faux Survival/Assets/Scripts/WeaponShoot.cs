@@ -44,6 +44,14 @@ public class WeaponShoot : MonoBehaviour
                     targetBody = FindRandomEnemy().transform;
                     target = targetBody.position;
                 }
+
+                if (weapon.Properties.Type == WeaponShootType.Point)
+                {
+                    targetBody = transform;
+
+                    Vector3 mouseScreenPosition = Input.mousePosition;
+                    target = Camera.main.ScreenToWorldPoint(new Vector3(mouseScreenPosition.x, mouseScreenPosition.y, Camera.main.nearClipPlane));
+                }
             }
 
             Vector2 homingDirection = shootDirection;
