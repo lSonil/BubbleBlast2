@@ -16,7 +16,7 @@ public class InventoryManager : MonoBehaviour
     public List<Image> passiveItemUISlots = new List<Image>(6);
     private int slotIndex = 0;
 
-    private void Start()
+    private void Awake()
     {
         AddWeapon(defaultWeapon, 1);
     }
@@ -97,12 +97,10 @@ public class InventoryManager : MonoBehaviour
 
     private int CheckIfAlreadyInInventory(WeaponStats weapon)
     {
-        for (int i = 0; i < equipedWeapons.Count; i++)
+        foreach(WeaponShoot wp in equipedWeapons)
         {
-            if (equipedWeapons[i].weapon.Properties.name == weapon.Properties.name)
-            {
-                return i;
-            }
+            if(wp.weapon==weapon)
+                return equipedWeapons.IndexOf(wp);
         }
 
         return 999;

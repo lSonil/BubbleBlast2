@@ -77,8 +77,13 @@ public class WeaponShoot : MonoBehaviour
     {
         while (true)
         {
-            StartCoroutine(ShootProjectile());
-            yield return new WaitForSeconds(weapon.Properties.Cooldown + bonus.cooldown);
+            if (weapon == null)
+                yield return null;
+            else
+            {
+                StartCoroutine(ShootProjectile());
+                yield return new WaitForSeconds(weapon.Properties.Cooldown + bonus.cooldown);
+            }
         }
     }
 
