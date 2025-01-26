@@ -185,11 +185,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8354af90658fa984495e7be309fc3bc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxDistance: 10
-  projectileSpeed: 10
-  cooldown: 3
-  projectile: {fileID: 5117251311947862139, guid: 07773c5d6d00e8447a3cd7e8716debf8, type: 3}
-  firePoint: {fileID: 284628092157943522}
+  maxDistance: 0
+  projectileSpeed: 0
+  cooldown: 0
+  projectile: {fileID: 0}
+  firePoint: {fileID: 0}
 --- !u!114 &4906300661492547023
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -202,7 +202,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae9deb745e878bb49a7f4732240fa7c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyData: {fileID: 11400000, guid: cd1c7c2e40e5c544686b63d3b176bc75, type: 2}
+  enemyData: {fileID: 11400000, guid: dc468df2e32f5fe40bbcf0a13698706b, type: 2}
   currentMoveSpeed: 0
   currentHealth: 0
   currentDamage: 0
