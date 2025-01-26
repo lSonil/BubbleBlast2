@@ -159,6 +159,28 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: bubble_2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: abcea7d5779530640a3042656af8f6d2
+      internalID: 863054539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
@@ -175,6 +197,7 @@ TextureImporter:
     nameFileIdTable:
       bubble_0: -9136834448258697486
       bubble_1: 1762854388791719718
+      bubble_2: 863054539
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

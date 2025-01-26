@@ -6,7 +6,7 @@ using TMPro;
 
 public class InventoryManager : MonoBehaviour
 {
-    //[SerializeField] private WeaponStats defaultWeapon;
+    [SerializeField] private WeaponShoot defaultWeapon;
     public List<WeaponShoot> equipedWeapons = new List<WeaponShoot>(0);
     public TextMeshProUGUI[] weaponLevels = new TextMeshProUGUI[6];
     private Dictionary<WeaponStats, int> weaponLevelsDict = new Dictionary<WeaponStats, int>();
@@ -17,7 +17,8 @@ public class InventoryManager : MonoBehaviour
 
     private void Awake()
     {
-        //AddWeapon(defaultWeapon);
+        if(defaultWeapon!=null)
+            AddWeapon(defaultWeapon);
     }
 
     public void AddWeapon(WeaponShoot weapon)
@@ -26,15 +27,13 @@ public class InventoryManager : MonoBehaviour
         // Already in inventory. Level-up!
         if (weaponSlot!=null)
         {
-            print(2);
             LevelUpWeapon(weaponSlot);
         }
         // Not in inventory already. Add it!
         else
         {
-            print(3);
             GameObject body = Instantiate(weapon.gameObject);
-            body.transform.SetParent(GameObject.FindGameObjectWithTag("Player").transform, false);
+            body.transform.SetParent(GameObject.FindGameObjectWithTag("Player").transform.GetChild(0).transform, false);
             body.name = weapon.name;
             slotIndex++;
             equipedWeapons.Add(body.GetComponent<WeaponShoot>());

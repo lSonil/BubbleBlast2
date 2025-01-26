@@ -449,6 +449,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5563ce8b5e8f984695bab9ffac7f02d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defaultWeapon: {fileID: 3510389346979921329, guid: c29681121cb997f4c99cc02f4b113d3c, type: 3}
   equipedWeapons: []
   weaponLevels:
   - {fileID: 1893447885}
@@ -516,7 +517,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 200, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &127290557
 MonoBehaviour:
@@ -784,8 +785,8 @@ MonoBehaviour:
   levelUpItems:
   - {fileID: 11400000, guid: 90a3dd7d00bb1364795bcfe1d8434900, type: 2}
   - {fileID: 11400000, guid: 5c7f3929b6409b04d9889313c31d14bc, type: 2}
-  - {fileID: 11400000, guid: 509a078ac9358724fa0843db37b80823, type: 2}
   - {fileID: 11400000, guid: 0d868f497d7a93c46aeba288c8fc52b9, type: 2}
+  - {fileID: 11400000, guid: 41a830af48539f6449b9262e979b2dd8, type: 2}
   inventoryManager: {fileID: 115953398}
 --- !u!4 &317190020
 Transform:
@@ -3814,7 +3815,6 @@ Transform:
   m_LocalScale: {x: 0.74049, y: 0.74049, z: 0.74049}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 7665672409400710416}
   - {fileID: 2021035872}
   - {fileID: 574779802}
   m_Father: {fileID: 0}
@@ -6345,72 +6345,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transitionAnim: {fileID: 915384462}
   sceneName: SampleScene
---- !u!1001 &7665672409400710415
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1394036686}
-    m_Modifications:
-    - target: {fileID: 2498561149813903793, guid: 9da6c5565fcad6747b50721e2d9dfac9, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2498561149813903793, guid: 9da6c5565fcad6747b50721e2d9dfac9, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2498561149813903793, guid: 9da6c5565fcad6747b50721e2d9dfac9, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2498561149813903793, guid: 9da6c5565fcad6747b50721e2d9dfac9, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2498561149813903793, guid: 9da6c5565fcad6747b50721e2d9dfac9, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2498561149813903793, guid: 9da6c5565fcad6747b50721e2d9dfac9, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2498561149813903793, guid: 9da6c5565fcad6747b50721e2d9dfac9, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2498561149813903793, guid: 9da6c5565fcad6747b50721e2d9dfac9, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2498561149813903793, guid: 9da6c5565fcad6747b50721e2d9dfac9, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2498561149813903793, guid: 9da6c5565fcad6747b50721e2d9dfac9, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2498561149813903793, guid: 9da6c5565fcad6747b50721e2d9dfac9, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6809491366913032909, guid: 9da6c5565fcad6747b50721e2d9dfac9, type: 3}
-      propertyPath: m_Name
-      value: Muzzle
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 9da6c5565fcad6747b50721e2d9dfac9, type: 3}
---- !u!4 &7665672409400710416 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2498561149813903793, guid: 9da6c5565fcad6747b50721e2d9dfac9, type: 3}
-  m_PrefabInstance: {fileID: 7665672409400710415}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

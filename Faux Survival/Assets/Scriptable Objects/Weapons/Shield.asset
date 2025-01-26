@@ -10,40 +10,53 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5d39bf14fc5c86f4a93e476009f55ffb, type: 3}
-  m_Name: Ray
+  m_Name: Shield
   m_EditorClassIdentifier: 
-  moveSpeed: 1
-  damage: 10
+  moveSpeed: 20
+  damage: 30
   sprite: {fileID: 21300000, guid: a6fbd5a181bc51e42a61a73fe8d727c8, type: 3}
   type: 0
+  focus: 0
   instant: 0
-  numberOfProjectiles: 1
+  numberOfProjectiles: 3
   pierce: 0
   delayBetweenShots: 0.7
-  cooldown: 3
+  lifetime: 5
+  cooldown: 10
   projectilePrefab: {fileID: 5117251311947862139, guid: 1c023568c2c9f1442bcc82cd62b2072a, type: 3}
   levelUpBonus:
   - moveSpeed: 0
     damage: 0
     pierce: 0
+    lifetime: 0
     numberOfProjectiles: 0
     delayBetweenShots: 0
     cooldown: 0
-  - moveSpeed: 1
-    damage: 1
+  - moveSpeed: 5
+    damage: 5
     pierce: 0
-    numberOfProjectiles: 0
+    lifetime: 1
+    numberOfProjectiles: 2
     delayBetweenShots: 0
-    cooldown: 0
-  - moveSpeed: 1
-    damage: 1
-    pierce: 0
-    numberOfProjectiles: 0
-    delayBetweenShots: 0
-    cooldown: 0
-  - moveSpeed: 1
-    damage: 1
-    pierce: 0
-    numberOfProjectiles: 0
-    delayBetweenShots: 0
-    cooldown: 0
+    cooldown: 1
+  - moveSpeed: 10
+    damage: 10
+    pierce: 1
+    lifetime: 1
+    numberOfProjectiles: 4
+    delayBetweenShots: 0.1
+    cooldown: 2
+  - moveSpeed: 20
+    damage: 10
+    pierce: 2
+    lifetime: 2
+    numberOfProjectiles: 5
+    delayBetweenShots: 0.1
+    cooldown: 4
+  - moveSpeed: 30
+    damage: 15
+    pierce: 2
+    lifetime: 2
+    numberOfProjectiles: 6
+    delayBetweenShots: 0.2
+    cooldown: 6

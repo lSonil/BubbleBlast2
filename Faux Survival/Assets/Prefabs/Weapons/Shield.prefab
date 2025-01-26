@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -1047465208547741684}
   - component: {fileID: -6221808441985448076}
   m_Layer: 0
-  m_Name: Ray
+  m_Name: Shield
   m_TagString: PlayerWeapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -80,8 +80,8 @@ SpriteRenderer:
   m_SortingLayerID: -538599395
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-  m_Color: {r: 0.8670931, g: 0, b: 1, a: 1}
+  m_Sprite: {fileID: 2389193319765324094, guid: d6a29b3d7d80bd14fa8d9c63753e8607, type: 3}
+  m_Color: {r: 0.9540881, g: 0.6556604, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -156,7 +156,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 0.16, y: 0.16}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
