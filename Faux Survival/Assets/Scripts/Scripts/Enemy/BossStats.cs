@@ -5,6 +5,9 @@ public class BossStats : MonoBehaviour
     public EnemyScriptableObject enemyData;
     public GameObject winPanel;
     public GameObject gameOverPanel;
+    public GameObject castle0;
+    public GameObject castle1;
+    public GameObject castle2;
     public GameObject soundController;
 
     //Current stats
@@ -15,7 +18,6 @@ public class BossStats : MonoBehaviour
     [HideInInspector]
     public int currentDamage;
 
-    public float despawnDistance = 20f;
     Transform player;
 
     private SoundController soundControllerScript;
@@ -35,6 +37,9 @@ public class BossStats : MonoBehaviour
     }
     public void TakeDamage(int dmg)
     {
+        if (castle0 != null || castle1 != null || castle2 != null)
+            return;
+
         currentHealth -= dmg;
 
         if (currentHealth <= 0)

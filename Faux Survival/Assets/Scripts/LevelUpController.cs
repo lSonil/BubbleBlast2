@@ -52,7 +52,6 @@ public class LevelUpController : MonoBehaviour
                 buttonContainer.GetChild(i).gameObject.SetActive(true);
 
                 Transform button = buttonContainer.GetChild(i);
-                Image itemImage = button.Find("ItemImage").GetComponent<Image>();
                 TextMeshProUGUI itemText = button.Find("ItemText").GetComponent<TextMeshProUGUI>();
 
                 // Assign the image and text from selected items
@@ -69,8 +68,6 @@ public class LevelUpController : MonoBehaviour
                     itemText.text = itemDescription;
                 }
 
-                // Display the item image
-                itemImage.sprite = selectedItem.image;
 
                 // Remove previous onClick listeners to prevent multiple calls
                 button.GetComponent<Button>().onClick.RemoveAllListeners();
@@ -102,7 +99,6 @@ public class LevelUpController : MonoBehaviour
             buttonContainer.GetChild(1).gameObject.SetActive(false);
             buttonContainer.GetChild(3).gameObject.SetActive(false);
             Transform button = buttonContainer.GetChild(2);
-            Image itemImage = button.Find("ItemImage").GetComponent<Image>();
             TextMeshProUGUI itemText = button.Find("ItemText").GetComponent<TextMeshProUGUI>();
 
             // Assign the image and text from selected items
@@ -119,8 +115,6 @@ public class LevelUpController : MonoBehaviour
                 itemText.text = itemDescription;
             }
 
-            // Display the item image
-            itemImage.sprite = selectedItem.image;
 
             // Remove previous onClick listeners to prevent multiple calls
             button.GetComponent<Button>().onClick.RemoveAllListeners();

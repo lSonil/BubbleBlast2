@@ -26,7 +26,7 @@ public class PlayerStats : MonoBehaviour
     public float levelUpThresholdIncreasePercentage = 25f;
     [SerializeField] LevelUpController levelUpController;
     private SoundController soundControllerScript;
-
+    public AudioSource sound;
     private void Start()
     {
         currentHealth = startingHealth;

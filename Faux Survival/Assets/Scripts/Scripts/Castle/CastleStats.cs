@@ -6,6 +6,7 @@ public class CastleStats : MonoBehaviour
     public GameObject bossFightController;
     private int currentHealth;
     private BossFightController bossFightControllerScript;
+    public AudioSource audio;
 
     void Start()
     {
@@ -26,6 +27,7 @@ public class CastleStats : MonoBehaviour
 
     public void Kill()
     {
+        audio.Play();
         Destroy(gameObject);
     }
 

@@ -75,7 +75,6 @@ public class EnemyStats : MonoBehaviour
     private void OnDestroy()
     {
         GameObject es = GameObject.Find("Enemy Spawner");
-
         if (es != null)
         {
             es.GetComponent<EnemySpawner>().OnEnemyKilled(gameObject);

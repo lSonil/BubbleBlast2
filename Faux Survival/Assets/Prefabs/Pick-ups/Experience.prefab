@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -6307057377680764863}
   - component: {fileID: 8985141329276902312}
   m_Layer: 0
-  m_Name: Blue gem
+  m_Name: Experience
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 4338908794641687225, guid: dc34663087032654d9b52a93acd4ae25, type: 3}
+  m_Sprite: {fileID: -2946224621641151013, guid: 0ee94abcb6aec6241b12609474dc29c3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

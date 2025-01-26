@@ -16,4 +16,4 @@ MonoBehaviour:
   description: Homing
   itemLevel: 0
   weaponName: Homing
-  wapon: {fileID: -1047465208547741684, guid: 107b4955808be2745b4b9533a5d2936f, type: 3}
+  weapon: {fileID: 0}

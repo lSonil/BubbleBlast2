@@ -38,11 +38,14 @@ public class EnemySpawner : MonoBehaviour
 
     Transform player;
     List<GameObject> activeEnemies = new List<GameObject>();
+    AudioSource sound;
 
     void Start()
     {
         player = FindFirstObjectByType<PlayerStats>().transform;
         CalculateWaveQuota();
+        sound = GetComponent<AudioSource>();
+
     }
 
     void Update()
@@ -123,6 +126,8 @@ public class EnemySpawner : MonoBehaviour
 
     public void OnEnemyKilled(GameObject enemy)
     {
+        sound.Play();
+
         // Remove the killed enemy from the list of active enemies
         activeEnemies.Remove(enemy);
 

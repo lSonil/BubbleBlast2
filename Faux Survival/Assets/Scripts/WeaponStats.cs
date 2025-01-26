@@ -19,9 +19,7 @@ public class WeaponStats : MonoBehaviour
 
     IEnumerator DestryBullet()
     {
-        print(lifetime);
         yield return new WaitForSeconds(lifetime);
-        print("lifetime");
         Destroy(gameObject);
     }
 

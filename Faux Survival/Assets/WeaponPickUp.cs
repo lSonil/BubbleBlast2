@@ -9,6 +9,8 @@ public class WeaponPickUp : Pickup
     public override void Collect()
     {
         levelUp.WeaponPickUpScreen(weapon);
+        PlayerStats player = FindFirstObjectByType<PlayerStats>();
+        player.sound.Play();
     }
 
     //private void OnTriggerEnter2D(Collider2D col)

@@ -12,7 +12,6 @@ public class WeaponShoot : MonoBehaviour
     private Vector2 shootDirection = Vector2.up;
     private Transform cluster;
 
-
     void Update()
     {
         if (handler == null)
@@ -89,9 +88,8 @@ public class WeaponShoot : MonoBehaviour
             // Create a new Weapon instance at the firePoint position.
             GameObject projectile = Instantiate(weapon.Properties.ProjectilePrefab, firePoint.transform.position, Quaternion.identity);
             projectile.transform.SetParent(cluster, false);
-
             // Set the Weapon's velocity to move in the last direction the player was moving.
-            if(weapon.Properties.Instant && targetBody != null)
+            if (weapon.Properties.Instant && targetBody != null)
                 projectile.transform.position = target;
             else
                 projectile.GetComponent<Rigidbody2D>().linearVelocity = homingDirection * (weapon.Properties.MoveSpeed + weapon.Properties.LevelUpBonus[lvl].moveSpeed);
