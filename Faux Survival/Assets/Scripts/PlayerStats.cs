@@ -49,15 +49,7 @@ public class PlayerStats : MonoBehaviour
 
     public void TakeDamage(int damageAmount)
     {
-        if (currentHealth > 0)
-        {
-            currentHealth -= damageAmount;
-            UpdateHealthText();
-        }
-        else
-        {
-            RestartLevel();
-        }
+        RestartLevel();
     }
 
     public void RestoreHealth(int restoreAmount)

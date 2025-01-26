@@ -178,7 +178,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8600117330095005190}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8354af90658fa984495e7be309fc3bc1, type: 3}
   m_Name: 
@@ -243,11 +243,13 @@ MonoBehaviour:
   enemyData: {fileID: 11400000, guid: 05285cde2f7549146b34a4f2e3fa6a95, type: 2}
   winPanel: {fileID: 0}
   gameOverPanel: {fileID: 0}
+  castle0: {fileID: 0}
+  castle1: {fileID: 0}
+  castle2: {fileID: 0}
   soundController: {fileID: 0}
   currentMoveSpeed: 0
   currentHealth: 0
   currentDamage: 0
-  despawnDistance: 20
 --- !u!82 &-3094994241985716283
 AudioSource:
   m_ObjectHideFlags: 0

@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
-using static UnityEngine.GraphicsBuffer;
 
 public class EnemyMovement : MonoBehaviour
 {
@@ -38,7 +36,6 @@ public class EnemyMovement : MonoBehaviour
 
     IEnumerator Shoot()
     {
-        print(23245);
         while(Vector2.Distance(transform.position, player.transform.position) <= maxDistance)
         {
             GameObject proj = Instantiate(projectile, firePoint.transform.position, Quaternion.identity);

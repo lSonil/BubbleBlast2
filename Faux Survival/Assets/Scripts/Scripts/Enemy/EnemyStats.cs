@@ -41,7 +41,7 @@ public class EnemyStats : MonoBehaviour
     public void TakeDamage(int dmg)
     {
         currentHealth -= dmg;
-
+        Camera.main.GetComponent<CameraFollow>().LightShake();
         if (currentHealth <= 0)
         {
             Kill();

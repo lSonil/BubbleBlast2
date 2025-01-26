@@ -6,7 +6,7 @@ public class EnemyProjectile : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            collision.GetComponent<PlayerStats>().TakeDamage(20);
+            collision.GetComponent<PlayerStats>().TakeDamage(200);
             Destroy(gameObject);
         }
     }

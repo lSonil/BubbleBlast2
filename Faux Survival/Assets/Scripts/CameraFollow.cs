@@ -1,4 +1,5 @@
 using UnityEngine;
+using DG.Tweening; // Import DOTween namespace
 
 public class CameraFollow : MonoBehaviour
 {
@@ -20,10 +21,18 @@ public class CameraFollow : MonoBehaviour
         {
             Vector3 targetPosition = target.position + offset;
 
-            //targetPosition.x = Mathf.Clamp(targetPosition.x, minPos.x, maxPos.x);
-            //targetPosition.y = Mathf.Clamp(targetPosition.y, minPos.y, maxPos.y);
+            // Uncomment to restrict camera movement to within min and max bounds
+            // targetPosition.x = Mathf.Clamp(targetPosition.x, minPos.x, maxPos.x);
+            // targetPosition.y = Mathf.Clamp(targetPosition.y, minPos.y, maxPos.y);
 
             transform.position = Vector3.Lerp(transform.position, targetPosition, smoothSpeed);
         }
+    }
+
+    // Method to shake the camera lightly
+    public void LightShake(float duration = .1f, float strength = .2f, int vibrato = 10, float randomness = 90f)
+    {
+        // Perform a light shake on the camera's position
+        transform.DOShakePosition(duration, strength, vibrato, randomness, fadeOut: true);
     }
 }

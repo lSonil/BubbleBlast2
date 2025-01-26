@@ -571,8 +571,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8201533693797990477, guid: bafce4a614fa3754a99078d50f395fd0, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8201533693797990477, guid: bafce4a614fa3754a99078d50f395fd0, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: 0ca7fb5eab60e014f92ffcb0fac52848, type: 3}
+    - target: {fileID: 8201533693797990477, guid: bafce4a614fa3754a99078d50f395fd0, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 0ca7fb5eab60e014f92ffcb0fac52848, type: 3}
+    - target: {fileID: 8201533693797990477, guid: bafce4a614fa3754a99078d50f395fd0, type: 3}
       propertyPath: m_PlayOnAwake
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1465,6 +1477,7 @@ GameObject:
   - component: {fileID: 1086440834}
   - component: {fileID: 1086440833}
   - component: {fileID: 1086440832}
+  - component: {fileID: 1086440835}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1546,6 +1559,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1086440835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1086440831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa1b9750e6fa608458d0868ab8253d9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  screenshotKey: 273
+  fileName: Screenshot
 --- !u!1 &1113462934
 GameObject:
   m_ObjectHideFlags: 0
@@ -2446,9 +2473,41 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7509032555237267464, guid: b320bbb5153736046bcb65badcc577a8, type: 3}
+      propertyPath: game
+      value: 
+      objectReference: {fileID: 121537342}
+    - target: {fileID: 7509032555237267464, guid: b320bbb5153736046bcb65badcc577a8, type: 3}
+      propertyPath: quit
+      value: 
+      objectReference: {fileID: 495110635}
+    - target: {fileID: 7509032555237267464, guid: b320bbb5153736046bcb65badcc577a8, type: 3}
+      propertyPath: firstImage
+      value: 
+      objectReference: {fileID: -6294781524826520378, guid: 5c81ba4953162e64080ee93430d2b98b, type: 3}
+    - target: {fileID: 7509032555237267464, guid: b320bbb5153736046bcb65badcc577a8, type: 3}
+      propertyPath: secondImage
+      value: 
+      objectReference: {fileID: 2542785529839846499, guid: cb81a4e84133bdb4ab16896380fafe76, type: 3}
+    - target: {fileID: 7509032555237267464, guid: b320bbb5153736046bcb65badcc577a8, type: 3}
+      propertyPath: displayImage
+      value: 
+      objectReference: {fileID: 5346607134414825871}
+    - target: {fileID: 7509032555237267464, guid: b320bbb5153736046bcb65badcc577a8, type: 3}
+      propertyPath: nextSceneName
+      value: SampleScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 7509032555237267464, guid: b320bbb5153736046bcb65badcc577a8, type: 3}
       propertyPath: transitionAnim
       value: 
       objectReference: {fileID: 896561981}
+    - target: {fileID: 7509032555237267464, guid: b320bbb5153736046bcb65badcc577a8, type: 3}
+      propertyPath: timeBetweenImages
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7509032555237267464, guid: b320bbb5153736046bcb65badcc577a8, type: 3}
+      propertyPath: timeBetweenImages2
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2556,21 +2615,32 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6584314460029279058, guid: 48bbc87601aed8b408057b0fea58abe8, type: 3}
       propertyPath: m_Color.b
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6584314460029279058, guid: 48bbc87601aed8b408057b0fea58abe8, type: 3}
       propertyPath: m_Color.g
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6584314460029279058, guid: 48bbc87601aed8b408057b0fea58abe8, type: 3}
       propertyPath: m_Color.r
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48bbc87601aed8b408057b0fea58abe8, type: 3}
+--- !u!114 &5346607134414825871 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6584314460029279058, guid: 48bbc87601aed8b408057b0fea58abe8, type: 3}
+  m_PrefabInstance: {fileID: 5346607134414825870}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
