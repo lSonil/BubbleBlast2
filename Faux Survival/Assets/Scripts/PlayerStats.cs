@@ -11,6 +11,8 @@ public class PlayerStats : MonoBehaviour
     public Image healthFillAmount;
     public Image levelFillAmount;
     public GameObject gameOverPanel;
+    public GameObject gameWinPanel;
+    public GameObject soundController;
 
     private int experienceTotal = 0;
     public int currentHealth;
@@ -23,12 +25,14 @@ public class PlayerStats : MonoBehaviour
     // You can adjust this percentage to control how the level-up threshold increases.
     public float levelUpThresholdIncreasePercentage = 25f;
     [SerializeField] LevelUpController levelUpController;
+    private SoundController soundControllerScript;
 
     private void Start()
     {
         currentHealth = startingHealth;
         currentMight = startingMight;
         currentSpeed = startingSpeed;
+        soundControllerScript = soundController.GetComponent<SoundController>();
 
         UpdateHealthText();
     }
@@ -64,8 +68,11 @@ public class PlayerStats : MonoBehaviour
 
     private void RestartLevel()
     {
-        if (!gameOverPanel.activeInHierarchy)
+        if (!gameOverPanel.activeInHierarchy && !gameWinPanel.activeInHierarchy)
+        {
             gameOverPanel.SetActive(true);
+            soundControllerScript.StartGameOverSound();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
