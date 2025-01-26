@@ -16,6 +16,7 @@ MonoBehaviour:
   damage: 50
   sprite: {fileID: 21300000, guid: 3c84cd9c7ddd51c4b959d02c41aced07, type: 3}
   type: 2
+  focus: 0
   instant: 1
   numberOfProjectiles: 3
   pierce: 0
@@ -44,6 +45,20 @@ MonoBehaviour:
     lifetime: 0
     numberOfProjectiles: 4
     delayBetweenShots: 0.15
+    cooldown: 0
+  - moveSpeed: 0
+    damage: 200
+    pierce: 0
+    lifetime: 0
+    numberOfProjectiles: 6
+    delayBetweenShots: 0.2
+    cooldown: 0
+  - moveSpeed: 0
+    damage: 200
+    pierce: 0
+    lifetime: 0
+    numberOfProjectiles: 6
+    delayBetweenShots: 0.2
     cooldown: 0
   - moveSpeed: 0
     damage: 200

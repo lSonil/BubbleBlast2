@@ -60,3 +60,17 @@ MonoBehaviour:
     numberOfProjectiles: 6
     delayBetweenShots: 0.2
     cooldown: 6
+  - moveSpeed: 30
+    damage: 15
+    pierce: 2
+    lifetime: 2
+    numberOfProjectiles: 6
+    delayBetweenShots: 0.2
+    cooldown: 6
+  - moveSpeed: 30
+    damage: 15
+    pierce: 2
+    lifetime: 2
+    numberOfProjectiles: 6
+    delayBetweenShots: 0.2
+    cooldown: 6
