@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: -2865968910349718259}
   - component: {fileID: 7294683141910354935}
   m_Layer: 3
-  m_Name: Bull
+  m_Name: MadBull
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -170,7 +170,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae9deb745e878bb49a7f4732240fa7c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyData: {fileID: 11400000, guid: dc468df2e32f5fe40bbcf0a13698706b, type: 2}
+  enemyData: {fileID: 11400000, guid: a87336457fb6ba64ca526f20a4d861ed, type: 2}
   currentMoveSpeed: 0
   currentHealth: 0
   currentDamage: 0
@@ -341,4 +341,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteList:
-  - {fileID: 876946296742726176, guid: c59e4655c56a61647a5aae22786fb86c, type: 3}
+  - {fileID: 6644287201414460074, guid: da39119f80f8a82428a3517446db9e16, type: 3}
+  - {fileID: -5033703595519285326, guid: 7803f600f7935e04baa80d7931d1675f, type: 3}
+  - {fileID: -120874835684231346, guid: a94d462558a3c194cb1c374131da9ede, type: 3}
+  - {fileID: 4801905213756566890, guid: c6ac4dd0f7aeffd409ed29bb75f74279, type: 3}
+  - {fileID: -7352918237159918203, guid: ea1f03eae84c07646bcf7e34f6145531, type: 3}
+  - {fileID: 2957018951604907901, guid: 32721c4c3e72c99429a11f76f828d861, type: 3}

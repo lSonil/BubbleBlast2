@@ -15,11 +15,14 @@ public class SceneTransition : MonoBehaviour
     {
         StartCoroutine(LoadScene());
     }
+    public void Quit()
+    {
+        Application.Quit();
+    }
 
     IEnumerator LoadScene()
     {
-        if (!transitionAnim.gameObject.activeInHierarchy)
-            transitionAnim.gameObject.SetActive(true);
+        transitionAnim.gameObject.SetActive(true);
         transitionAnim.SetTrigger("fadeIn");
         yield return new WaitForSeconds(1.5f);
         SceneManager.LoadScene(sceneName);
@@ -27,9 +30,7 @@ public class SceneTransition : MonoBehaviour
 
     public void ChangeScene()
     {
-        if (!transitionAnim.gameObject.activeInHierarchy)
-            transitionAnim.gameObject.SetActive(true);
-
+        transitionAnim.gameObject.SetActive(true);
         game.enabled = false;
         quit.enabled = false;
         transitionAnim.SetTrigger("fadeIn");

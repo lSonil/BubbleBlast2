@@ -35,7 +35,6 @@ public class BossMovement : MonoBehaviour
 
     IEnumerator Shoot()
     {
-        print(23245);
         while (Vector2.Distance(transform.position, player.transform.position) <= maxDistance)
         {
             GameObject proj = Instantiate(projectile, firePoint.transform.position, Quaternion.identity);

@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &284628092157943522
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7484727017863933347}
+  m_Layer: 3
+  m_Name: FirePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: -5938655980376293919, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7484727017863933347
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 284628092157943522}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 461759420925149490}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &461759420925149495
 GameObject:
   m_ObjectHideFlags: 0
@@ -17,9 +48,9 @@ GameObject:
   - component: {fileID: 6338432222799699834}
   - component: {fileID: -6781126698758975850}
   - component: {fileID: -2865968910349718259}
-  - component: {fileID: 7294683141910354935}
+  - component: {fileID: 4648563831575817198}
   m_Layer: 3
-  m_Name: Bull
+  m_Name: MadLama
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37,7 +68,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 7484727017863933347}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &461759420925149489
@@ -84,7 +116,7 @@ SpriteRenderer:
   m_SortingLayerID: -538599395
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 2957018951604907901, guid: 32721c4c3e72c99429a11f76f828d861, type: 3}
+  m_Sprite: {fileID: 3675751242198516051, guid: d5e17edfa13e837418b7478f88b3030a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -129,17 +161,17 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.04, y: 0}
+  m_Offset: {x: 0, y: -0.39}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.63, y: 0.43}
+    oldSize: {x: 0.56, y: 0.64}
     newSize: {x: 1.375, y: 1.625}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.52, y: 0.27}
+  m_Size: {x: 1.02, y: 0.56}
   m_EdgeRadius: 0
 --- !u!114 &3285046736517432149
 MonoBehaviour:
@@ -153,11 +185,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8354af90658fa984495e7be309fc3bc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxDistance: 0
-  projectileSpeed: 0
-  cooldown: 0
-  projectile: {fileID: 0}
-  firePoint: {fileID: 0}
+  maxDistance: 10
+  projectileSpeed: 3
+  cooldown: 8
+  projectile: {fileID: 5117251311947862139, guid: 07773c5d6d00e8447a3cd7e8716debf8, type: 3}
+  firePoint: {fileID: 284628092157943522}
 --- !u!114 &4906300661492547023
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -170,7 +202,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae9deb745e878bb49a7f4732240fa7c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyData: {fileID: 11400000, guid: dc468df2e32f5fe40bbcf0a13698706b, type: 2}
+  enemyData: {fileID: 11400000, guid: d5039eae9f9091948b73cf5728c52fd9, type: 2}
   currentMoveSpeed: 0
   currentHealth: 0
   currentDamage: 0
@@ -328,7 +360,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &7294683141910354935
+--- !u!114 &4648563831575817198
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -341,4 +373,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteList:
-  - {fileID: 876946296742726176, guid: c59e4655c56a61647a5aae22786fb86c, type: 3}
+  - {fileID: 3675751242198516051, guid: d5e17edfa13e837418b7478f88b3030a, type: 3}
+  - {fileID: -700167599704029231, guid: ccd65722afb2f104a8684bcfe687ace1, type: 3}
+  - {fileID: 1316500215486239568, guid: da5105792c7c38a4abe2848662a1623b, type: 3}
