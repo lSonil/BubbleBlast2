@@ -9,6 +9,7 @@ public class LevelUpController : MonoBehaviour
     [SerializeField] private LevelUpItem defaultItem;
     public GameObject levelUpScreen;
     public GameObject gameOverPanel;
+    public GameObject gameWinPanel;
     public Transform buttonContainer;
     public List<LevelUpItem> levelUpItems;
     private List<LevelUpItem> selectedItems;
@@ -32,7 +33,7 @@ public class LevelUpController : MonoBehaviour
     // Function to open the Level Up screen
     public void LevelUpScreen()
     {
-        if (!gameOverPanel.activeInHierarchy)
+        if (!gameOverPanel.activeInHierarchy && !gameWinPanel.activeInHierarchy)
         {// Pause the game time
             Time.timeScale = 0f;
 
@@ -84,7 +85,7 @@ public class LevelUpController : MonoBehaviour
 
     public void WeaponPickUpScreen(LevelUpItem item)
     {
-        if (!gameOverPanel.activeInHierarchy)
+        if (!gameOverPanel.activeInHierarchy && !gameWinPanel.activeInHierarchy)
         {// Pause the game time
             Time.timeScale = 0f;
 

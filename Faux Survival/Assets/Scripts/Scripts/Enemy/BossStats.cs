@@ -4,6 +4,8 @@ public class BossStats : MonoBehaviour
 {
     public EnemyScriptableObject enemyData;
     public GameObject winPanel;
+    public GameObject gameOverPanel;
+    public GameObject soundController;
 
     //Current stats
     [HideInInspector]
@@ -16,6 +18,8 @@ public class BossStats : MonoBehaviour
     public float despawnDistance = 20f;
     Transform player;
 
+    private SoundController soundControllerScript;
+
     void Awake()
     {
         //Assign the vaiables
@@ -27,16 +31,8 @@ public class BossStats : MonoBehaviour
     void Start()
     {
         player = FindFirstObjectByType<PlayerStats>().transform;
+        soundControllerScript = soundController.GetComponent<SoundController>();
     }
-
-    void Update()
-    {
-        if (Vector2.Distance(transform.position, player.position) >= despawnDistance)
-        {
-            ReturnEnemy();
-        }
-    }
-
     public void TakeDamage(int dmg)
     {
         currentHealth -= dmg;
@@ -47,11 +43,14 @@ public class BossStats : MonoBehaviour
         }
     }
 
-
     public void Kill()
     {
         Destroy(gameObject);
-        winPanel.SetActive(true);
+        if (!gameOverPanel.activeInHierarchy)
+        {
+            winPanel.SetActive(true);
+            soundControllerScript.StartWinSound();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -70,21 +69,5 @@ public class BossStats : MonoBehaviour
             PlayerStats player = col.gameObject.GetComponent<PlayerStats>();
             player.TakeDamage(currentDamage);
         }
-    }
-
-    private void OnDestroy()
-    {
-        GameObject es = GameObject.Find("Enemy Spawner");
-
-        if (es != null)
-        {
-            es.GetComponent<EnemySpawner>().OnEnemyKilled(gameObject);
-        }
-    }
-
-    void ReturnEnemy()
-    {
-        EnemySpawner es = GameObject.Find("Enemy Spawner").GetComponent<EnemySpawner>();
-        transform.position = player.position + es.relativeSpawnPoints[Random.Range(0, es.relativeSpawnPoints.Count)].position;
     }
 }

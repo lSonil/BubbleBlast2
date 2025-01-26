@@ -34,6 +34,7 @@ public class CastleStats : MonoBehaviour
         if (collision.gameObject.CompareTag("PlayerWeapon"))
         {
             TakeDamage(collision.gameObject.GetComponent<WeaponStats>().Properties.Damage);
+            Destroy(collision.gameObject);
         }
     }
 }
