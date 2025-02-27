@@ -36,6 +36,7 @@ public class EnemySpawner : MonoBehaviour
     [Header("Spawn Positions")]
     public List<Transform> relativeSpawnPoints;
 
+    bool isWaveStarting = false;
     Transform player;
     List<GameObject> activeEnemies = new List<GameObject>();
     AudioSource sound;
@@ -50,18 +51,46 @@ public class EnemySpawner : MonoBehaviour
 
     void Update()
     {
-        if (currentWaveCount < waves.Count && waves[currentWaveCount].spawnCount == 0)
+        // Check if all waves have been spawned and all enemies are gone
+        if (currentWaveCount >= waves.Count - 1 && waves[currentWaveCount].spawnCount >= waves[currentWaveCount].waveQuota && enemiesAlive == 0)
         {
+            StartCoroutine(RestartWaves());
+        }
+        // Start next wave when all enemies of the current wave are spawned and max limit isn't reached
+        else if (currentWaveCount < waves.Count && waves[currentWaveCount].spawnCount >= waves[currentWaveCount].waveQuota && enemiesAlive < maxEnemiesAllowed && !isWaveStarting)
+        {
+            Debug.Log("Starting next wave...");
+            isWaveStarting = true; // Prevent multiple calls
             StartCoroutine(BeginNextWave());
         }
 
         spawnTimer += Time.deltaTime;
 
-        if (spawnTimer >= waves[currentWaveCount].spawnInterval)
+        // Only spawn if the max enemy limit is not reached
+        if (spawnTimer >= waves[currentWaveCount].spawnInterval && enemiesAlive < maxEnemiesAllowed)
         {
             spawnTimer = 0f;
             SpawnEnemies();
         }
+    }
+
+    IEnumerator RestartWaves()
+    {
+        yield return new WaitForSeconds(waveInterval); // Wait before restarting
+
+        currentWaveCount = 0; // Reset to first wave
+
+        // Reset spawn counts for all waves
+        foreach (var wave in waves)
+        {
+            wave.spawnCount = 0;
+            foreach (var enemyGroup in wave.enemyGroups)
+            {
+                enemyGroup.spawnCount = 0;
+            }
+        }
+
+        CalculateWaveQuota(); // Recalculate for the first wave
     }
 
     IEnumerator BeginNextWave()
@@ -71,8 +100,10 @@ public class EnemySpawner : MonoBehaviour
         if (currentWaveCount < waves.Count - 1)
         {
             currentWaveCount++;
+            Debug.Log(currentWaveCount);
             CalculateWaveQuota();
         }
+        isWaveStarting = false; 
     }
 
     void CalculateWaveQuota()

@@ -20,7 +20,9 @@ public class WeaponShoot : MonoBehaviour
         // Get the mouse position in world coordinates
         if (weapon.Properties.Type == WeaponShootType.Homing)
         {
-            mouseWorldPosition = FindClosestEnemy().transform.position;
+            var enemy = FindClosestEnemy();
+            if (enemy != null) 
+                mouseWorldPosition = enemy.transform.position;
         }
         if (weapon.Properties.Type == WeaponShootType.Point)
         {

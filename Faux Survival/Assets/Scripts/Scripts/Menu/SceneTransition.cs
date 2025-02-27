@@ -31,8 +31,10 @@ public class SceneTransition : MonoBehaviour
     public void ChangeScene()
     {
         transitionAnim.gameObject.SetActive(true);
-        game.enabled = false;
-        quit.enabled = false;
+        if (game != null)
+            game.enabled = false;
+        if (quit != null)
+            quit.enabled = false;
         transitionAnim.SetTrigger("fadeIn");
         StartDisplay();
     }
